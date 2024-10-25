@@ -1,0 +1,19 @@
+.contact {
+    height: inherit;
+
+    &__inner {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__content {
+        flex: 1 1 auto;
+    }
+
+    &__map {
+        min-height: 100%;
+        flex: 0 0 50%;
+        justify-self: stretch;
+        background-color: #3af883;
+    }
+}

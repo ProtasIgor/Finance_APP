@@ -1,39 +1,29 @@
-from flask import Flask, render_template
+from flask import render_template, make_response, url_for
+from app.app import app
+import app.assets.assets as assets
 import config as config
-from flask_assets import Environment, Bundle
-from webassets.script import CommandLineEnvironment
+from flask_cors import CORS
 
-app = Flask(__name__,
-            template_folder='./app/template/',
-            static_folder='./app/static/'
-            )
 # Загружаем конфигурацию
 app.config.from_object('config.DevelopementConfig')
 
-assets = Environment(app)
-scss = Bundle(
-    './style.scss',
-    filters=['libsass', 'cssmin'],  # libsass - компиляция, cssmin - минификация
-    output='./app/static/css/main.css'  # Выходной скомпилированный файл
-)
-assets.register('scss_all', scss)
-
+CORS(app)
 
 @app.route('/')
-def home():
-    return render_template('home/index.html')
+def index():
+    return render_template('index.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/admin')
 def admin():
     return render_template('admin/index.html')
 
-
-
-""" @app.cli.command('watch')
-def watch():
-    cmdenv = CommandLineEnvironment(assets, app.logger)
-    cmdenv.watch()
- """
+@app.route('/test')
+def index2():
+    return "<link rel='stylesheet' href='app/static/css/style.css'>Главная страница"
 
 
 if __name__ == '__main__':

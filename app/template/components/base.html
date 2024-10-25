@@ -8,14 +8,21 @@
     <link rel="shortcut icon"href=" {{ url_for('static', filename='img/favicon/favicon.png') }}">
     <title>Finance - Admin Panel</title>
     <meta name="description" content="Административная панель Finance App: управляйте финансами своей компании с лёгкостью. Отслеживайте расходы, анализируйте доходы и генерируйте отчёты в реальном времени. Интуитивно понятный интерфейс и мощные инструменты для оптимизации финансовых процессов.">
-    <link href="{{ url_for('static', filename='css/style.css')}} " rel="stylesheet">
+
+    {% assets "scss_main" %}
+    <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+    {% endassets %}
+    {% block link_css %}
+    {% endblock %}
 </head>
 
 <body>
     {% include './components/header.html '%}
 
-    {% block main %}
-    {% endblock %}
+    <main class="main">
+        {% block main %}
+        {% endblock %}
+    </main>
 
     {% include './components/footer.html' %}
 </body>

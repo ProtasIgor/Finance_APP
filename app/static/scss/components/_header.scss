@@ -1,0 +1,17 @@
+.header {
+    padding: 0 .8rem;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo>img {
+        width: 150px;
+    }
+
+    &__nav-item {
+        text-transform: capitalize;
+    }
+}

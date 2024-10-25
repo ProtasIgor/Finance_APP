@@ -1,0 +1,40 @@
+{% extends './components/base.html' %}
+
+{% block link_css %}
+{% assets "scss_contact" %}
+<link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
+{% block main %}
+<section class="contact">
+    <div class="container">
+        <div class="contact__inner">
+            <div class="contact__cotnent">
+                <h2 class="contact__title">Наши контакты</h2>
+                <p class="contact__description">
+                    Главный разработчик: Протас Игорь Владимирович
+
+                    Прием граждан по вопросам качества оказания услуг –
+                    каждый четверг по предварительной записи по телефону: +375(29)719-**-**.
+                </p>
+                <p class="contact__address">
+                    <span>Адрес</span>
+                    г.Минск, ул. Ленина 50
+                </p>
+                <p class="contact__phone">
+                    <span>Телефон</span>
+                    +375(29)719-**-**
+                </p>
+                <p class="contact__mail">
+                    <span>Почта</span>
+                    <a href="mailto:iprotas01@gmail.com">iprotas01@gmail.com</a>
+                </p>
+            </div>
+            <div class="contact__map">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A6197802cc28a18a030beb4278b586a4bde3194f8bbe180d2a5f1a3215eff3598&amp;source=constructor" width="600" height="450" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

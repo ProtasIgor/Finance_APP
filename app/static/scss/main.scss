@@ -1,0 +1,26 @@
+@import 'components/reset';
+@import 'components/font';
+@import 'components/vars';
+@import 'components/header';
+@import 'components/footer';
+
+body {
+    color: $color;
+    font-family: "WenKai Mono";
+    font-family: "PT Sans Narrow";
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    min-height: 99dvh;
+}
+
+.main {
+    flex: 1 0 auto;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
