@@ -1,2 +1,20 @@
 $color: #333;
 $color-background: #fff;
+$color-hover-theme-light: #666666;
+$color-hover-theme-dark: #c7c7c7;
+
+:root {
+    $color: #7da2a9;
+    $color-background: #f7f7f7;
+    color: $color;
+    background-color: $color-background;
+    transition: color 1.3s, background-color .5s;
+}
+
+:root.dark__mode {
+    $color: #fff;
+    $color-background: #353535;
+    $color-: #FF6B01;
+    color: $color;
+    background-color: $color-background;
+}

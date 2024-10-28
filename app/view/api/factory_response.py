@@ -3,7 +3,7 @@ from flask import jsonify, make_response
 from app.app import app
 
 with app.app_context():
-    class List_Response():
+    class Factory_Response():
         response_error_request_not_data = make_response(
             jsonify({'status':'error',
                      'error': 'Тело запроса должно содержать JSON. Неверный формат JSON'}),
