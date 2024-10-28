@@ -2,13 +2,19 @@
     <div class="container">
         <div class="header__inner">
             <a class="header__logo" href="/">
-                <img src="{{ url_for('static', filename='img/logo/logo-purple.png')}}" alt="logo">
+                <img src="{{ url_for('static', filename='img/logo/logo-white.png')}}" alt="logo">
             </a>
-            <nav class="header__nav">
-                <a class="header__nav-item" href="/contact">Контакты</a>
-                <a class="header__nav-item" href="">О нас</a>
-                <a class="header__nav-item" href="">Контакты</a>
-            </nav>
+            <div class="header__menu">
+                <nav class="header__nav">
+                    <a class="header__nav-item" href="/contact">Контакты</a>
+                    <a class="header__nav-item" href="">О нас</a>
+                    <a class="header__nav-item" href="">Особенности</a>
+                    <a class="header__nav-item" href="">Новости</a>
+                </nav>
+                <button class="theme__button">
+                    <img src="" alt="">
+                </button>
+            </div>
         </div>
     </div>
 </div>

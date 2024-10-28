@@ -3,17 +3,34 @@
 @import 'components/vars';
 @import 'components/header';
 @import 'components/footer';
+@import 'components/social';
 
-body {
+:root {
+    $color: #7da2a9;
+    $color-background: #f7f7f7;
     color: $color;
-    font-family: "WenKai Mono";
-    font-family: "PT Sans Narrow";
+    background-color: $color-background;
+    transition: color 1.3s, background-color .5s;
+}
 
-    display: flex;
-    flex-direction: column;
-
+:root.dark__mode {
+    $color: #fff;
+    $color-background: #353535;
+    $color-: #FF6B01;
+    color: $color;
+    background-color: $color-background;
+}
+* {
+    color: inherit;
+    background-color: inherit;
+}
+body {
     min-height: 100vh;
     min-height: 99dvh;
+    display: flex;
+    flex-direction: column;
+    font-family: "WenKai Mono";
+    font-family: "PT Sans Narrow";
 }
 
 .main {
