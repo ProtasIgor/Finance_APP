@@ -1,13 +1,49 @@
+@import '../components/vars';
+
+.main {
+    height: 1px;
+}
+
 .contact {
-    height: inherit;
+    &__cotnent {
+        p {
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            font-size: 1.1em;
+
+            span {
+                margin-bottom: .2em;
+                display: block;
+                font-size: 2rem;
+                letter-spacing: 0;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.contact {
+    padding: 0 8px;
+    height: 100%;
 
     &__inner {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
     }
 
     &__content {
         flex: 1 1 auto;
+    }
+
+    &__title {
+        margin-bottom: 5rem;
+        font-size: 4rem;
     }
 
     &__map {
@@ -16,4 +52,19 @@
         justify-self: stretch;
         background-color: #3af883;
     }
+
+    & .container,
+    & .contact__inner,
+    & &__map {
+        height: 100%;
+    }
 }
+
+@media (hover: hover) {
+    a:hover {
+        color: $color-hover-theme-light;
+        transition: color .3s linear;
+    }
+}
+
+@media screen and (max-width: 1000px) {}

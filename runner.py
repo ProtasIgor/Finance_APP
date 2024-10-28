@@ -1,4 +1,3 @@
-from flask import render_template, make_response, url_for, request, g
 from app.app import app
 import app.assets.assets as assets
 import config as config

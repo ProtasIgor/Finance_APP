@@ -6,14 +6,14 @@ class Model_Api():
     def __init__(self):
         pass
 
-    def get_family(self, family_id):
-        resp = connection.execute(text("SELECT family_get(:family_id)"), {"family_id": family_id})
+    def get_family(self, property:dict):
+        resp = connection.execute(text("SELECT family_get(:family_id)"), property)
         return resp.fetchall()[0][0]
 
-    def update_family_balance(self, family_id, balance):
-        resp = connection.execute(text("SELECT family_balance_update(:family_id, :balance)"), {"family_id": family_id, "balance": balance})
+    def update_family_balance(self, property:dict):
+        resp = connection.execute(text("SELECT family_balance_update(:family_id, :balance)"), property)
         return resp.fetchall()[0][0]
 
-    def update_family_address(self, family_id, address):
-        resp = connection.execute(text("SELECT family_address_update(:family_id, :address)"), {"family_id": family_id, "address": address})
+    def update_family_address(self, property:dict):
+        resp = connection.execute(text("SELECT family_address_update(:family_id, :address)"), property)
         return resp.fetchall()[0][0]
