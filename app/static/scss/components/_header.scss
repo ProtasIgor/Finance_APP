@@ -1,17 +1,151 @@
 .header {
     padding: 0 .8rem;
 
-    &__inner {
+    &__inner,
+    &__menu {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    &__menu {
+        gap: 2rem;
     }
 
     &__logo>img {
         width: 150px;
     }
 
+    &__nav {
+        display: flex;
+        gap: 1em;
+    }
+
     &__nav-item {
+        padding: .5em .8em;
         text-transform: capitalize;
+        text-decoration: none;
+
+        border-radius: 1rem;
+        border: 2px solid currentColor;
+    }
+}
+
+.header-mobile {
+    padding: 2vh 0;
+    display: none;
+}
+
+.theme-button {
+    height: 40px;
+    width: 40px;
+    border: 1px solid var(--color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-button svg {
+    fill: var(--color);
+}
+
+.menu-close-button {
+    display: none;
+}
+
+@media (hover: hover) {
+    .header {
+
+        &__nav-item:hover,
+        .theme-button:hover {
+            color: var(--color-hover);
+            background-color: var(--background-color-hover);
+            border-color: var(--background-color-hover);
+            box-shadow: 0px 0px 15px 0px var(--color-shadow-hover);
+            transition: all .3s linear;
+        }
+
+        .theme-button:hover svg {
+            fill: var(--color-hover);
+        }
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .header {
+        padding: 2vh 0;
+
+        &__logo {
+            display: none;
+        }
+
+        &__inner {
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        transform: translateY(-100%);
+        transition: all .5s linear;
+
+        &__logo {
+            display: block;
+        }
+
+        &__inner,
+        &__menu {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        &__nav {
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        &__nav-item {
+            text-align: center;
+            font-size: 1.5em;
+        }
+    }
+
+    .header.visit {
+        transform: translateY(0);
+        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .theme-button {
+        height: 60px;
+        width: 60px;
+    }
+    
+    .menu-close-button {
+        position: absolute;
+        top: 2vh;
+        right: 5vw;
+        display: block;
+    }
+
+    .header-mobile {
+        display: block;
+
+        &__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__logo {
+            text-decoration: none;
+            text-transform: uppercase;
+        }
     }
 }

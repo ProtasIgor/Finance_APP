@@ -7,11 +7,11 @@ from app.model.table_enum import TableEnum
 handler_request = Handler_Request()
 model = Model_Api()
 
-@app.route('/api/family.get', methods=['POST'])
-def api_get_family():
-    return handler_request.handle_get_request(
+""" @app.route('/api/family.add', methods=['POST'])
+def api_add_family():
+    return handler_request.handle_add_request(
         request.get_json(silent=True),
         model.get_family,
         TableEnum.family.value,
-        'id'
-    )
+        'balance', 'address'
+    ) """

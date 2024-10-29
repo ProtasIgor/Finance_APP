@@ -4,6 +4,7 @@
     &__cotnent {
         p {
             margin-bottom: 1rem;
+            line-height: 1.1;
             letter-spacing: 2px;
             font-size: 1.1em;
 
@@ -50,20 +51,31 @@
         background-color: #3af883;
     }
 
-    & .container,
-    & .contact__inner,
-    & &__map {
+    .container,
+    .contact__inner,
+    &__map {
         min-height: 100%;
         overflow: hidden;
     }
 }
 
 @media (hover: hover) {
-    a:hover {
+    .contact a:hover {
         color: $color-hover-theme-light;
         transition: color .3s linear;
     }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 720px) {
+    .contact {
+        padding: 0;
+
+        &__inner {
+            flex-direction: column;
+        }
+
+        &__map {
+            min-height: 30vh;
+        }
+    }
 }

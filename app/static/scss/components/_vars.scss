@@ -4,11 +4,16 @@ $color-hover-theme-light: #666666;
 $color-hover-theme-dark: #c7c7c7;
 
 :root {
-    $color: #7da2a9;
+    $color: #164567;
     $color-background: #f7f7f7;
     color: $color;
     background-color: $color-background;
     transition: color 1.3s, background-color .5s;
+
+    --color: #164567;
+    --color-hover: #fff;
+    --background-color-hover: #164567;
+    --color-shadow-hover: #164567;
 }
 
 :root.dark__mode {
@@ -17,4 +22,9 @@ $color-hover-theme-dark: #c7c7c7;
     $color-: #FF6B01;
     color: $color;
     background-color: $color-background;
+
+    --color: #fff;
+    --color-hover: #353535;
+    --background-color-hover: #fff;
+    --color-shadow-hover: #fff;
 }

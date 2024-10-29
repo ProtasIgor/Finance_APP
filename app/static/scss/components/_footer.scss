@@ -1,14 +1,13 @@
 .footer {
     &__wrapper {
-        padding: 0;
+        padding: 2vh 0.8rem;
     }
 
-    &__wrapper--menu {
+    /* &__wrapper--menu {
         padding: 2vh 0;
-    }
+    } */
 
     &__wrapper--last {
-        padding: 2vh 0.8rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -17,5 +16,17 @@
     &__line {
         height: 2px;
         background-color: currentColor;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .footer {
+        text-align: center;
+
+        &__wrapper--last {
+            flex-direction: column-reverse;
+            justify-content: center;
+            gap: 2vh;
+        }
     }
 }

@@ -15,3 +15,7 @@ with app.app_context():
         def get_response_error_request_not_data_item(self, error_message):
             return make_response( jsonify({'status':'error',
                      'error': 'В теле запроса отсутствуют обязательные поля: {}'.format(error_message)}), 400)
+
+        def get_response_error_request_uncorrect_type_data_item(self, error_message):
+            return make_response( jsonify({'status':'error',
+                     'error': 'Неверный тип данных в полях: {}'.format(error_message)}), 400)
