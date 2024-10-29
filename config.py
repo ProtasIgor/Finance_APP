@@ -9,9 +9,9 @@ class BaseConfig:
 class DevelopementConfig(BaseConfig):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEVELOPMENT_DATABASE_URI') or \
-        'mysql+pymysql://igor:1234@127.0.0.1/Finance_db'
+        'mysql+pymysql://igor:1234@192.168.1.175/Finance_DB'
 
 class ProductionConfig(BaseConfig):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.environ.get('PRODUCTION_DATABASE_URI') or \
-	    'mysql+pymysql://igor:1234@127.0.0.1/Finance_db'
+	    'mysql+pymysql://igor:1234@192.168.1.175/Finance_DB'
