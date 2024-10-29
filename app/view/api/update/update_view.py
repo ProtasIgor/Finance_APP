@@ -17,7 +17,7 @@ def api_update_family_balance():
 
 @app.route('/api/family.address.update', methods=['POST'])
 def api_update_family_address():
-        # Возвращщает make_response()
+    # Возвращщает make_response()
     return handler_request.handle_get_request(
         request.get_json(silent=True),
         model.update_family_address,

@@ -24,18 +24,20 @@ with app.app_context():
                     return factory_response.response_error_request_not_data
                 # Проверка входных данных на наличие всех обязательных свойств
                 if self.check_exist_request_data_item(data, list_property) == False:
-                    print('o')
                     return factory_response.get_response_error_request_not_data_item(
                         self.get_string_not_exist_request_data_item(data, list_property))
                 # Создание словаря с параметрами для запроса к БД
                 dict_prop = self.make_dict_property_from_request(data, list_property)
+
+
+                from app.model.model import Model_Api
+                #print(Model_Api.get_type_table_property('family', 'id')) доделать метод для проверки request на тип данных +
                 # Запрос к БД
                 response = make_response(model_query(dict_prop), 200)
                 response.headers['Content-Type'] = 'application/json; charset=utf-8'
                 return response
             except Exception as ex:
-                print(3)
-                print(ex.error_message())
+                print(ex.with_traceback())
                 return make_response(jsonify({"error": "Неизвестная ошибка"}), 400)
 
         def handle_update_request(self, data:dict, model_query, *property):
@@ -64,8 +66,6 @@ with app.app_context():
                 response.headers['Content-Type'] = 'application/json; charset=utf-8'
                 return response
             except Exception as ex:
-                print(3)
-                print(ex.error_message())
                 return make_response(jsonify({"error": "Неизвестная ошибка"}), 400)
 
         def check_exist_request_data_item(self, data:dict, property:list):
