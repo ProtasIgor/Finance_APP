@@ -13,3 +13,15 @@ def index():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/peculiarities')
+def peculiarities():
+    return render_template('peculiarity.html')
+
+@app.route('/news')
+def news():
+    return render_template('news.html')
