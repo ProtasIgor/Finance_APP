@@ -99,6 +99,7 @@ with app.app_context():
                 # Преобразование float полей в decimal в dict
                 dict_prop = self.convert_float_to_decimal_in_dict(dict_prop)
                 # Проверка типа входных данных на NULL либо тип в БД
+                print('0')
                 if self.check_corrent_type_or_null_request_data_items(dict_prop, table_name) == False:
                     return factory_response.get_response_error_request_uncorrect_type_data_item(
                         self.get_string_not_corrent_type_or_null_request_data_item(dict_prop, table_name))
@@ -108,10 +109,10 @@ with app.app_context():
                 response.headers['Content-Type'] = 'application/json; charset=utf-8'
                 return response
             except Exception as ex:
-                #print(ex.with_traceback())
+                print(ex.with_traceback())
                 return make_response(jsonify({"error": "Неизвестная ошибка"}), 400)
 
-        def handle_insert_request(self, data:dict, model_query, table_name:str, *property):
+        def handle_add_request(self, data:dict, model_query, table_name:str, *property):
             """Метод для создания данных в БД.
             :param data: Исходный словарь, из которого будут извлекаться значения, получается путем "data = request.get_json()".
             :param model_query: Метод, который создает запрос к БД, метод класса Model_Api.
@@ -132,16 +133,16 @@ with app.app_context():
                 # Преобразование float полей в decimal в dict
                 dict_prop = self.convert_float_to_decimal_in_dict(dict_prop)
                 # Проверка типа входных данных на NULL либо тип в БД
-                if self.check_corrent_type_or_null_request_data_items(dict_prop, table_name) == False:
+                if self.check_corrent_type_request_data_items(dict_prop, table_name) == False:
                     return factory_response.get_response_error_request_uncorrect_type_data_item(
-                        self.get_string_not_corrent_type_or_null_request_data_item(dict_prop, table_name))
+                        self.get_string_not_corrent_type_request_data_item(dict_prop, table_name))
 
                 # Запрос к БД
                 response = make_response(model_query(dict_prop), 200)
                 response.headers['Content-Type'] = 'application/json; charset=utf-8'
                 return response
             except Exception as ex:
-                #print(ex.with_traceback())
+                print(ex.with_traceback())
                 return make_response(jsonify({"error": "Неизвестная ошибка"}), 400)
 
         def check_exist_request_data_item(self, data:dict, property:list):
@@ -151,7 +152,7 @@ with app.app_context():
                 :return: False, если не хватает хоть одного обязательного поля в :property.
             """
             for item in property:
-                if not data.get(item):
+                if not data.get(item) and data.get(item) != '':
                     return False
             return True
 
@@ -165,6 +166,8 @@ with app.app_context():
                 type_column = Model_Api.get_type_table_property(table_name=table_name, column_name=key).lower()
                 type_property = type(value).__name__.lower()
 
+                if type_property == 'str' and (type_column == 'varchar' or type_column == 'text'):
+                    continue;
                 if type_column != type_property:
                     return False
             return True
@@ -176,7 +179,6 @@ with app.app_context():
                 :return Возвращает False если хоть одно поле имеет неверный тип данных
             """
             primary_key = Model_Api.get_type_table_primary_key(table_name)
-
             if primary_key[1].lower() != type(dict_property[primary_key[0]]).__name__.lower():
                 return False # Если тип данных первичного ключа не сходится
 
@@ -184,6 +186,8 @@ with app.app_context():
                 type_column = Model_Api.get_type_table_property(table_name=table_name, column_name=key).lower()
                 type_property = type(value).__name__.lower()
 
+                if type_property == 'str' and (type_column == 'varchar' or type_column == 'text'):
+                    continue;
                 if not type_property or type_column != type_property:
                     return False
             return True
@@ -213,6 +217,8 @@ with app.app_context():
                 type_column = Model_Api.get_type_table_property(table_name=table_name, column_name=key).lower()
                 type_property = type(value).__name__.lower()
 
+                if type_property == 'str' and (type_column == 'varchar' or type_column == 'text'):
+                    continue;
                 if type_column != type_property:
                     list_not_corrent_type.append(key)
 
@@ -240,6 +246,8 @@ with app.app_context():
                 type_column = Model_Api.get_type_table_property(table_name=table_name, column_name=key).lower()
                 type_property = type(value).__name__.lower()
 
+                if type_property == 'str' and (type_column == 'varchar' or type_column == 'text'):
+                    continue;
                 if not type_property or type_column != type_property:
                     list_not_corrent_type.append(key)
 

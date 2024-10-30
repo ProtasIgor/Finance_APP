@@ -126,12 +126,28 @@
         height: 60px;
         width: 60px;
     }
-    
+
     .menu-close-button {
         position: absolute;
-        top: 2vh;
+        top: 4vh;
         right: 5vw;
         display: block;
+        border: none;
+
+        svg {
+            stroke: var(--color);
+        }
+    }
+
+    .menu-button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        svg {
+            height: 100%;
+            width: 100%;
+            fill: var(--color);
+        }
     }
 
     .header-mobile {
