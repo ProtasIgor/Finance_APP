@@ -1,9 +1,8 @@
-@import 'components/reset';
-@import 'components/font';
-@import 'components/vars';
-@import 'components/header';
-@import 'components/footer';
-@import 'components/social';
+@import '../components/reset';
+@import '../components/font';
+@import '../components/vars';
+@import '../components/footer';
+@import '../components/social';
 
 * {
     color: inherit;
