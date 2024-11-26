@@ -96,3 +96,25 @@ def api_get_secret_key_person():
         TableEnum.personsecretkey.value,
         'id'
     )
+
+@app.route('/api/registration.get', methods=['POST'])
+def api_get_registration():
+    return handler_request.handle_get_request(
+        request.get_json(silent=True),
+        model.get_registration,
+        TableEnum.registration.value,
+        'login', 'password'
+    )
+
+@app.route('/api/person_by_family.get', methods=['POST'])
+def api_get_person_by_family_id():
+    return handler_request.handle_get_request(
+        request.get_json(silent=True),
+        model.get_person_by_family_id,
+        TableEnum.person.value,
+        'family_id'
+    )
+
+@app.route('/api/system_info.get', methods=['GET'])
+def api_get_system_info():
+    return handler_request.handle_get_system_info_request()

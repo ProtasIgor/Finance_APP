@@ -1,11 +1,24 @@
 {% extends './components/base.html' %}
 
+{% block link_css %}
+{% assets "scss_index" %}
+<link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+{% endassets %}
+{% endblock %}
+
 {% block main %}
 <div class="container">
     <div class="main__inner">
-        <p class="main__title">PRO Финансы </p>
-        <p class="main__text"></p>
-        <img class="main__picture" src="" alt="finance"></img>
+        <section class="main__block">
+            <p class="main__title">PRO Финансы – ваш персональный помощник в управлении семейным бюджетом!</p>
+            <p class="main__text">Cовременное программное обеспечение, которое помогает вам эффективно планировать, контролировать и оптимизировать семейные финансы. Наш инструмент разработан для тех, кто хочет разумно распоряжаться своими доходами, экономить на ненужных расходах и достигать финансовых целей с минимальными усилиями.</p>
+            <img class="main__picture" src="https://cdn.dribbble.com/users/722246/screenshots/2262276/priory.gif" alt="finance"></img>
+        </section>
+        <section class="main__block">
+            <p class="main__title">Админ-панель: полный контроль над сервером</p>
+            <p class="main__text">Админ-панель – это удобный инструмент для мониторинга сервера. Она предоставляет доступ к ключевой информации и функциям, позволяя быстро и эффективно решать задачи администрирования.</p>
+            <a class="main__link" href="/admin">Перейти в Админ панель</a>
+        </section>
     </div>
 </div>
 {% endblock %}

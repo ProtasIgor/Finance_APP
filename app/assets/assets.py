@@ -25,6 +25,30 @@ scss_admin = Bundle(
     depends='scss/**/*.scss'
 )
 
+scss_index = Bundle(
+    'scss/page/index.scss',
+    filters=['libsass', 'cssmin'],
+    output='css/index.css',
+    depends='scss/**/*.scss'
+)
+
+scss_about = Bundle(
+    'scss/page/about.scss',
+    filters=['libsass', 'cssmin'],
+    output='css/index.css',
+    depends='scss/**/*.scss'
+)
+
+scss_peculiarity = Bundle(
+    'scss/page/peculiarity.scss',
+    filters=['libsass', 'cssmin'],
+    output='css/index.css',
+    depends='scss/**/*.scss'
+)
+
 assets.register('scss_main', scss_main)
 assets.register('scss_contact', scss_contact)
 assets.register('scss_admin', scss_admin)
+assets.register('scss_index', scss_index)
+assets.register('scss_about', scss_about)
+assets.register('scss_peculiarity', scss_peculiarity)

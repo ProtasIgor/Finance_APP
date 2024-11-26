@@ -271,3 +271,61 @@ with app.app_context():
                 key: (Decimal(value) if isinstance(value, float) else value)
                 for key, value in param_dict.items()
             }
+
+        def handle_get_system_info_request(self):
+            import platform
+            import os
+            import psutil
+            import socket
+            from datetime import datetime
+
+            process = psutil.Process(os.getpid())  # Информация о текущем процессе
+            boot_time = datetime.fromtimestamp(psutil.boot_time())  # Время загрузки системы
+
+            result = {
+                "boot_time": boot_time.strftime("%Y-%m-%d %H:%M:%S"),
+                "process": {
+                    "pid": process.pid,
+                    "name": process.name(),
+                    "status": process.status(),
+                    "memory_info": {
+                        "rss": f"{round(process.memory_info().rss / (1024**2), 2)} MB",
+                        "vms": f"{round(process.memory_info().vms / (1024**2), 2)} MB"
+                    },
+                    "cpu_times": {
+                        "user": f"{process.cpu_times().user:.2f} sec",
+                        "system": f"{process.cpu_times().system:.2f} sec"
+                    }
+                },
+                "cpu": {
+                    "processor": platform.processor(),
+                    "cpu_count_logical": psutil.cpu_count(logical=True),
+                    "cpu_count_physical": psutil.cpu_count(logical=False),
+                    "cpu_frequency": f"{psutil.cpu_freq().max:.2f} MHz",
+                    "cpu_usage": f"{psutil.cpu_percent(interval=1)}%"
+                },
+                "memory": {
+                    "total": f"{round(psutil.virtual_memory().total / (1024**2), 2)} MB",
+                    "available": f"{round(psutil.virtual_memory().available / (1024**2), 2)} MB",
+                    "used": f"{round(psutil.virtual_memory().used / (1024**2), 2)} MB",
+                    "percent_used": f"{psutil.virtual_memory().percent}%"
+                },
+                "os": {
+                    "name": platform.system(),
+                    "version": platform.version(),
+                    "release": platform.release(),
+                    "architecture": platform.architecture()[0]
+                },
+                "disk": {
+                    "total": f"{round(psutil.disk_usage('/').total / (1024**2), 2)} MB",
+                    "used": f"{round(psutil.disk_usage('/').used / (1024**2), 2)} MB",
+                    "free": f"{round(psutil.disk_usage('/').free / (1024**2), 2)} MB",
+                    "percent_used": f"{psutil.disk_usage('/').percent}%"
+                },
+                "network": {
+                    "hostname": socket.gethostname(),
+                    "ip_address": socket.gethostbyname(socket.gethostname()),
+                }
+            }
+
+            return make_response(jsonify(result), 200)

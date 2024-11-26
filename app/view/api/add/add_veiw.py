@@ -87,3 +87,12 @@ def api_add_secret_key_person():
         TableEnum.personsecretkey.value,
         'value'
     )
+
+@app.route('/api/registration.add', methods=['POST'])
+def api_add_registration():
+    return handler_request.handle_add_request(
+        request.get_json(silent=True),
+        model.add_registration,
+        TableEnum.registration.value,
+        'login', 'password', 'email'
+    )

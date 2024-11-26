@@ -47,6 +47,11 @@ class Model_Api():
         connection.commit()
         return response.fetchall()[0][0]
 
+    def get_person_by_family_id(self, property:dict):
+        response = connection.execute(text("SELECT get_person_by_family_id(:family_id)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
     def get_person_account(self, property:dict):
         response = connection.execute(text("SELECT get_person_account(:id)"), property)
         connection.commit()
@@ -54,6 +59,11 @@ class Model_Api():
 
     def get_person_goal(self, property:dict):
         response = connection.execute(text("SELECT get_person_goal(:id)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
+    def get_registration(self, property:dict):
+        response = connection.execute(text("SELECT get_registration(:login, :password)"), property)
         connection.commit()
         return response.fetchall()[0][0]
 
@@ -100,6 +110,11 @@ class Model_Api():
 
     def add_category_operation(self, property:dict):
         response = connection.execute(text("SELECT add_category_operation(:name, :person_id, :for_family_id)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
+    def add_registration(self, property:dict):
+        response = connection.execute(text("SELECT add_registration(:login, :password, :email)"), property)
         connection.commit()
         return response.fetchall()[0][0]
 

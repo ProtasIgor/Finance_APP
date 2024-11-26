@@ -16,12 +16,28 @@
 
 <body>
     <header class="header">
-        <button>Вернутся на сайт</button>
-        <h1>Добро пожаловать в панель Администратора!</h1>
+        <div class="container">
+            <a class="back-button" href="/">Вернутся на сайт</a>
+            <h1 class="title">Добро пожаловать в панель Администратора!</h1>
+        </div>
     </header>
 
     <main class="main">
-        
+       <div class="container">
+        <h1 style="text-align: center;">Динамическая системная информация</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Свойство</th>
+                    <th>Значение</th>
+                </tr>
+            </thead>
+            <tbody id="system-info">
+
+            </tbody>
+        </table>
+
+       </div>
     </main>
 
     {% include './components/footer.html' %}
