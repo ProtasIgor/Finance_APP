@@ -8,6 +8,7 @@ Flask==3.0.3
 Flask-Assets==2.1.0
 Flask-Cors==5.0.0
 Flask-SQLAlchemy==3.1.1
+gevent==24.11.1
 greenlet==3.1.1
 inflect==7.4.0
 itsdangerous==2.2.0
@@ -15,10 +16,14 @@ Jinja2==3.1.4
 libsass==0.23.0
 MarkupSafe==3.0.2
 more-itertools==10.5.0
+psutil==6.1.0
 pycparser==2.22
 PyMySQL==1.1.1
+setuptools==75.6.0
 SQLAlchemy==2.0.36
 typeguard==4.3.0
 typing_extensions==4.12.2
 webassets==2.0
 Werkzeug==3.0.4
+zope.event==5.0
+zope.interface==7.2

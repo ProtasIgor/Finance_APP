@@ -40,7 +40,7 @@ def api_add_operation():
         request.get_json(silent=True),
         model.add_operation,
         TableEnum.operation.value,
-        'name', 'comment', 'operation_type_id', 'operation_category_id', 'person_account_id'
+        'name', 'comment', 'operation_type_id', 'operation_category_id', 'person_account_id', 'sum'
     )
 
 @app.route('/api/operation_type.add', methods=['POST'])

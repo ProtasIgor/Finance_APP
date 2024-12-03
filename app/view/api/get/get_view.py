@@ -115,6 +115,51 @@ def api_get_person_by_family_id():
         'family_id'
     )
 
+@app.route('/api/total_family_budget.get', methods=['POST'])
+def api_get_total_family_budget():
+    return handler_request.handle_get_request(
+        request.get_json(silent=True),
+        model.get_total_family_budget,
+        TableEnum.person.value,
+        'id'
+    )
+
+@app.route('/api/person_goals.get', methods=['POST'])
+def api_get_person_goals():
+    return handler_request.handle_get_request(
+        request.get_json(silent=True),
+        model.get_person_goals,
+        TableEnum.person.value,
+        'id'
+    )
+
+@app.route('/api/person_budget.get', methods=['POST'])
+def api_get_person_budget():
+    return handler_request.handle_get_request(
+        request.get_json(silent=True),
+        model.get_person_budget,
+        TableEnum.person.value,
+        'id'
+    )
+
+@app.route('/api/family_operation.get', methods=['POST'])
+def api_get_family_operation():
+    return handler_request.handle_get_request(
+        request.get_json(silent=True),
+        model.get_family_operation,
+        TableEnum.person.value,
+        'family_id'
+    )
+
+@app.route('/api/family_sum_category_operation.get', methods=['POST'])
+def api_get_family_sum_category_operation():
+    return handler_request.handle_get_request(
+        request.get_json(silent=True),
+        model.get_family_sum_category_operation,
+        TableEnum.person.value,
+        'family_id'
+    )
+
 @app.route('/api/system_info.get', methods=['GET'])
 def api_get_system_info():
     return handler_request.handle_get_system_info_request()

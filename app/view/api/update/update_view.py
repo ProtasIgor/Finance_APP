@@ -115,6 +115,15 @@ def api_update_person():
         'id', 'name', 'lastname', 'surname', 'age', 'phone', 'family_id', 'gender_id'
     )
 
+@app.route('/api/person_goal.update', methods=['POST'])
+def api_update_person_goal():
+    return handler_request.handle_update_request(
+        request.get_json(silent=True),
+        model.update_person_goal,
+        TableEnum.persongoal.value,
+        'id', 'paid',
+    )
+
 @app.route('/api/secret_key_person.update', methods=['POST'])
 def api_update_secret_key_person():
     return handler_request.handle_update_request(

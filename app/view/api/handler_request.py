@@ -100,9 +100,9 @@ with app.app_context():
                 dict_prop = self.convert_float_to_decimal_in_dict(dict_prop)
                 # Проверка типа входных данных на NULL либо тип в БД
                 print('0')
-                if self.check_corrent_type_or_null_request_data_items(dict_prop, table_name) == False:
-                    return factory_response.get_response_error_request_uncorrect_type_data_item(
-                        self.get_string_not_corrent_type_or_null_request_data_item(dict_prop, table_name))
+                #if self.check_corrent_type_or_null_request_data_items(dict_prop, table_name) == False:
+                #    return factory_response.get_response_error_request_uncorrect_type_data_item(
+                #        self.get_string_not_corrent_type_or_null_request_data_item(dict_prop, table_name))
 
                 # Запрос к БД
                 response = make_response(model_query(dict_prop), 200)

@@ -67,6 +67,31 @@ class Model_Api():
         connection.commit()
         return response.fetchall()[0][0]
 
+    def get_total_family_budget(self, property:dict):
+        response = connection.execute(text("SELECT get_total_family_budget(:id)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
+    def get_person_goals(self, property:dict):
+        response = connection.execute(text("SELECT get_person_goals(:id)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
+    def get_family_operation(self, property:dict):
+        response = connection.execute(text("SELECT get_family_operation(:family_id)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
+    def get_family_sum_category_operation(self, property:dict):
+        response = connection.execute(text("SELECT get_family_sum_category_operation(:family_id)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
+    def get_person_budget(self, property:dict):
+        response = connection.execute(text("SELECT get_person_budget(:id)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
     # ADD
     def add_gender(self, property:dict):
         response = connection.execute(text("SELECT add_gender(:name)"), property)
@@ -79,7 +104,7 @@ class Model_Api():
         return response.fetchall()[0][0]
 
     def add_operation(self, property:dict):
-        response = connection.execute(text("SELECT add_operation(:name, :comment, :operation_type_id, :operation_category_id, :person_account_id)"), property)
+        response = connection.execute(text("SELECT add_operation(:name, :comment, :operation_type_id, :operation_category_id, :person_account_id, :sum)"), property)
         connection.commit()
         return response.fetchall()[0][0]
 
@@ -184,6 +209,11 @@ class Model_Api():
         connection.commit()
         return response.fetchall()[0][0]
 
+    def update_person_goal(self, property:dict):
+        response = connection.execute(text("SELECT update_person_goal(:id, :paid)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
     # DELETE
     def delete_family(self, property:dict):
         response = connection.execute(text("SELECT delete_family(:id)"), property)
@@ -217,6 +247,11 @@ class Model_Api():
 
     def delete_category_operation(self, property:dict):
         response = connection.execute(text("SELECT delete_category_operation(:id)"), property)
+        connection.commit()
+        return response.fetchall()[0][0]
+
+    def delete_person_goal(self, property:dict):
+        response = connection.execute(text("SELECT delete_person_goal(:id)"), property)
         connection.commit()
         return response.fetchall()[0][0]
 

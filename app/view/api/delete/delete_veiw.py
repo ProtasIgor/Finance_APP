@@ -61,6 +61,15 @@ def api_delete_operation_type():
         'id'
     )
 
+@app.route('/api/person_goal.delete', methods=['POST'])
+def api_delete_person_goal():
+    return handler_request.handle_delete_request(
+        request.get_json(silent=True),
+        model.delete_person_goal,
+        TableEnum.persongoal.value,
+        'id'
+    )
+
 @app.route('/api/secret_key_person.delete', methods=['POST'])
 def api_delete_secret_key_person():
     return handler_request.handle_delete_request(
